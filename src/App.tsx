@@ -32,6 +32,7 @@ const portfolio: PortfolioItem[] = [
 ]
 
 const categories = ['Todos', ...Array.from(new Set(portfolio.map((item) => item.category)))]
+const currentYear = new Date().getFullYear()
 
 function ChartGraphic({ item, compact = false }: { item: PortfolioItem; compact?: boolean }) {
   const height = compact ? 190 : 390
@@ -356,7 +357,7 @@ function App() {
           <div><strong>Serviços</strong><button onClick={() => scrollTo('servicos')}>Análise estatística</button><button onClick={() => scrollTo('servicos')}>Gráficos científicos</button><button onClick={() => scrollTo('servicos')}>Dashboards</button></div>
           <div><strong>Site</strong><button onClick={() => scrollTo('portfolio')}>Portfólio</button><button onClick={() => scrollTo('orcamento')}>Orçamento</button><a href="/privacidade.html">Privacidade</a></div>
         </div>
-        <div className="container footer-bottom"><span>© {new Date().getFullYear()} Horlem Consultory</span><span>Dados tratados com responsabilidade</span></div>
+        <div className="container footer-bottom"><span>© {currentYear} Horlem Consultory</span><span>Dados tratados com responsabilidade</span></div>
       </footer>
 
       {selected && (
