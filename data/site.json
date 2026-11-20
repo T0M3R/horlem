@@ -1,23 +1,23 @@
 {
-  "brandName": "Horlem",
+  "brandName": "DataLab.",
   "logo": "/media/logo.svg",
   "colors": {
     "navy": "#111d38",
     "blue": "#315bd6"
   },
   "hero": {
-    "eyebrow": "Análise e visualização de dados",
+    "eyebrow": "Data analysis & visualization",
     "title": "Transforme seus dados em resultados que fazem sentido.",
-    "emphasis": "fazem sentido.",
-    "lead": "Análise estatística, tratamento de dados e gráficos profissionais para pesquisas, projetos e decisões mais fundamentadas.",
+    "emphasis": "resultados que fazem sentido.",
+    "lead": "Análise estatística, visualização de dados e gráficos profissionais para pesquisas científicas, projetos acadêmicos e decisões fundamentadas.",
     "primaryButton": "Solicitar orçamento",
     "secondaryButton": "Explorar portfólio"
   },
   "intro": "Organizamos dados, escolhemos métodos adequados ao delineamento e transformamos resultados em figuras que comunicam com precisão — sem perder o contexto científico.",
   "institution": {
-    "name": "Horlem Consultory",
+    "name": "DataLab.",
     "description": "Análise estatística e visualização de dados.",
-    "copyright": "Dados tratados com responsabilidade"
+    "copyright": "Precisão nos dados. Clareza nos resultados."
   },
   "contact": {
     "whatsapp": "",

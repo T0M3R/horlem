@@ -3,7 +3,7 @@ import fs from 'node:fs'
 const readJson = (path) => JSON.parse(fs.readFileSync(path, 'utf8'))
 
 const errors = []
-const portfolio = readJson('./public/data/portfolio.json')
+const portfolio = readJson('./data/portfolio.json')
 if (!Array.isArray(portfolio)) errors.push('portfolio.json deve ser uma lista.')
 
 for (const [index, item] of (Array.isArray(portfolio) ? portfolio : []).entries()) {
@@ -13,7 +13,7 @@ for (const [index, item] of (Array.isArray(portfolio) ? portfolio : []).entries(
   if (!Array.isArray(item.data)) errors.push(`Projeto ${item.title || index + 1}: dados do gráfico inválidos.`)
 }
 
-for (const path of ['./public/data/site.json', './public/data/categories.json', './public/data/services.json', './public/data/library.json', './public/data/articles.json']) {
+for (const path of ['./data/site.json', './data/categories.json', './data/services.json', './data/library.json', './data/articles.json']) {
   try {
     readJson(path)
   } catch {

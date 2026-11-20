@@ -1,7 +1,7 @@
 media:
   - name: images
     label: Imagens
-    input: public/media
+    input: media
     output: /media
     rename: safe
     extensions: [jpg, jpeg, png, webp, svg]
@@ -10,7 +10,7 @@ content:
   - name: site
     label: Configurações do site
     type: file
-    path: public/data/site.json
+    path: data/site.json
     format: json
     fields:
       - name: brandName
@@ -102,7 +102,7 @@ content:
   - name: articles
     label: Artigos
     type: file
-    path: public/data/articles.json
+    path: data/articles.json
     format: json
     list: true
     fields:
@@ -128,7 +128,7 @@ content:
   - name: categories
     label: Categorias
     type: file
-    path: public/data/categories.json
+    path: data/categories.json
     format: json
     list: true
     fields:
@@ -136,11 +136,21 @@ content:
         label: Categoria
         type: string
         required: true
+      - name: categorySlug
+        label: Categoria do filtro
+        type: select
+        options:
+          values:
+            - all
+            - comparison
+            - correlation
+            - multivariate
+            - distribution
 
   - name: portfolio
     label: Portfólio
     type: file
-    path: public/data/portfolio.json
+    path: data/portfolio.json
     format: json
     list: true
     fields:
@@ -222,7 +232,7 @@ content:
   - name: services
     label: Serviços
     type: file
-    path: public/data/services.json
+    path: data/services.json
     format: json
     list: true
     fields:
@@ -245,7 +255,7 @@ content:
   - name: library
     label: Biblioteca de gráficos
     type: file
-    path: public/data/library.json
+    path: data/library.json
     format: json
     list: true
     fields:
