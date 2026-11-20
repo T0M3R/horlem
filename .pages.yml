@@ -1,0 +1,262 @@
+media:
+  - name: images
+    label: Imagens
+    input: public/media
+    output: /media
+    rename: safe
+    extensions: [jpg, jpeg, png, webp, svg]
+
+content:
+  - name: site
+    label: Configurações do site
+    type: file
+    path: public/data/site.json
+    format: json
+    fields:
+      - name: brandName
+        label: Nome da marca
+        type: string
+        required: true
+      - name: logo
+        label: Logo
+        type: image
+        options:
+          media: images
+      - name: colors
+        label: Cores principais
+        type: object
+        fields:
+          - name: navy
+            label: Azul escuro
+            type: string
+          - name: blue
+            label: Azul principal
+            type: string
+      - name: hero
+        label: Página inicial
+        type: object
+        fields:
+          - name: eyebrow
+            label: Selo
+            type: string
+          - name: title
+            label: Título
+            type: string
+            required: true
+          - name: emphasis
+            label: Trecho destacado
+            type: string
+          - name: lead
+            label: Subtítulo
+            type: text
+          - name: primaryButton
+            label: Texto do botão principal
+            type: string
+          - name: secondaryButton
+            label: Texto do botão secundário
+            type: string
+      - name: intro
+        label: Texto institucional
+        type: rich-text
+      - name: institution
+        label: Identidade institucional
+        type: object
+        fields:
+          - name: name
+            label: Nome
+            type: string
+          - name: description
+            label: Descrição
+            type: text
+          - name: copyright
+            label: Texto no rodapé
+            type: string
+      - name: contact
+        label: Contato
+        type: object
+        fields:
+          - name: whatsapp
+            label: WhatsApp (somente números)
+            type: string
+            pattern: "^([0-9]{10,15})?$"
+          - name: email
+            label: E-mail
+            type: string
+          - name: privacyText
+            label: Texto sobre privacidade
+            type: text
+      - name: socialLinks
+        label: Links externos
+        type: object
+        list:
+          collapsible: true
+        fields:
+          - name: label
+            label: Nome do link
+            type: string
+          - name: url
+            label: URL
+            type: string
+            pattern: "^https://.+"
+
+  - name: articles
+    label: Artigos
+    type: file
+    path: public/data/articles.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: excerpt
+        label: Resumo
+        type: text
+      - name: body
+        label: Texto do artigo
+        type: rich-text
+      - name: image
+        label: Imagem
+        type: image
+        options:
+          media: images
+      - name: publishedAt
+        label: Data de publicação
+        type: date
+
+  - name: categories
+    label: Categorias
+    type: file
+    path: public/data/categories.json
+    format: json
+    list: true
+    fields:
+      - name: category
+        label: Categoria
+        type: string
+        required: true
+
+  - name: portfolio
+    label: Portfólio
+    type: file
+    path: public/data/portfolio.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Identificador
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+      - name: title
+        label: Título do projeto
+        type: string
+        required: true
+      - name: category
+        label: Categoria
+        type: string
+        required: true
+      - name: description
+        label: Descrição curta
+        type: text
+        required: true
+      - name: chartType
+        label: Tipo de gráfico
+        type: select
+        options:
+          values:
+            - box
+            - violin
+            - scatter
+            - regression
+            - pca
+            - pcoa
+            - heatmap
+            - correlogram
+            - bar
+            - line
+            - multipanel
+      - name: method
+        label: Método estatístico
+        type: string
+      - name: application
+        label: Aplicação
+        type: string
+      - name: explanation
+        label: Texto explicativo
+        type: rich-text
+      - name: results
+        label: Resultados ou indicadores
+        type: text
+      - name: primaryImage
+        label: Imagem principal
+        type: image
+        options:
+          media: images
+      - name: additionalImages
+        label: Imagens adicionais
+        type: image
+        list: true
+        options:
+          media: images
+      - name: order
+        label: Ordem de exibição
+        type: number
+      - name: data
+        label: Dados do gráfico
+        type: object
+        list:
+          collapsible: true
+        fields:
+          - name: name
+            label: Rótulo
+            type: string
+          - name: value
+            label: Valor principal
+            type: number
+          - name: value2
+            label: Valor secundário
+            type: number
+
+  - name: services
+    label: Serviços
+    type: file
+    path: public/data/services.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descrição
+        type: text
+      - name: examples
+        label: Exemplos
+        type: string
+      - name: icon
+        label: Ícone
+        type: select
+        options:
+          values: [bar, chart, layers, database, microscope, target]
+
+  - name: library
+    label: Biblioteca de gráficos
+    type: file
+    path: public/data/library.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Categoria
+        type: string
+        required: true
+      - name: name
+        label: Nome do gráfico
+        type: string
+        required: true
+      - name: text
+        label: Texto explicativo
+        type: text

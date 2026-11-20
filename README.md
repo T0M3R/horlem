@@ -1,32 +1,27 @@
-# React + TypeScript + Vite
+# Horlem — site administrativo
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+O site é uma aplicação React estática publicada no GitHub Pages. Os textos, categorias, serviços, artigos e projetos são carregados dos arquivos JSON em `public/data/`.
 
-Currently, two official plugins are available:
+## Administrar o conteúdo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Instale o Pages CMS e autorize o acesso ao repositório pelo GitHub em https://app.pagescms.org.
+2. Abra o repositório e selecione uma das áreas: Configurações do site, Portfólio, Categorias, Serviços, Biblioteca de gráficos ou Artigos.
+3. Use os formulários para criar, editar ou excluir itens. Imagens podem ser enviadas diretamente pelos campos de imagem.
+4. Publique as alterações pelo Pages CMS. O CMS registra a alteração no GitHub.
+5. O workflow `Deploy GitHub Pages` executará o build e atualizará o site publicado.
 
-## React Compiler
+Não são necessários tokens ou credenciais no código.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Dados do portfólio
 
-## Expanding the Oxlint configuration
+Cada projeto pode conter título, descrição, categoria, tipo de gráfico, método, aplicação, texto explicativo, resultados, imagem principal, imagens adicionais e dados para o gráfico.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Desenvolvimento
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm ci
+npm run dev
+npm run check:content
+npm run lint
+npm run build
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
