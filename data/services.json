@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Gráficos profissionais",
+    "description": "Visualizações personalizadas para artigos, apresentações, relatórios, dissertações e teses.",
+    "examples": "",
+    "icon": "chart-column"
+  },
+  {
+    "title": "Análise estatística",
+    "description": "Testes estatísticos, comparações entre grupos, correlações, regressões e estimativas.",
+    "examples": "",
+    "icon": "calculator"
+  },
+  {
+    "title": "Análise multivariada",
+    "description": "PCA, PCoA, clustering, PERMANOVA, heatmaps e exploração de estruturas complexas.",
+    "examples": "",
+    "icon": "layers"
+  },
+  {
+    "title": "Tratamento de dados",
+    "description": "Organização, limpeza, padronização e preparação de bancos de dados para análise.",
+    "examples": "",
+    "icon": "database"
+  },
+  {
+    "title": "Figuras científicas",
+    "description": "Composições multipainel, figuras de publicação e visualizações para comunicação científica.",
+    "examples": "",
+    "icon": "layers"
+  },
+  {
+    "title": "Dashboards e relatórios",
+    "description": "Painéis interativos e relatórios visuais para acompanhamento e interpretação de indicadores.",
+    "examples": "",
+    "icon": "layout-dashboard"
+  }
+]

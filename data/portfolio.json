@@ -1,0 +1,100 @@
+[
+  {
+    "id": "comparacao-resultados",
+    "title": "Comparação de resultados experimentais",
+    "category": "Comparações",
+    "categorySlug": "comparison",
+    "description": "Exemplo demonstrativo de comparação de médias entre diferentes grupos experimentais.",
+    "method": "Comparação entre grupos",
+    "application": "Pesquisa experimental",
+    "chartType": "bar",
+    "explanation": "Dados simulados para demonstração visual.",
+    "results": "",
+    "order": 1,
+    "primaryImage": "",
+    "additionalImages": [],
+    "data": [
+      {"name": "Controle", "value": 22},
+      {"name": "Grupo A", "value": 31},
+      {"name": "Grupo B", "value": 27},
+      {"name": "Grupo C", "value": 39}
+    ]
+  },
+  {
+    "id": "relacionamento-variaveis",
+    "title": "Relacionamento entre variáveis",
+    "category": "Correlação",
+    "categorySlug": "correlation",
+    "description": "Visualização de associação entre duas variáveis quantitativas e tendência linear.",
+    "method": "Correlação e regressão",
+    "application": "Estudos observacionais",
+    "chartType": "scatter",
+    "explanation": "Dados simulados para demonstração visual.",
+    "results": "",
+    "order": 2,
+    "primaryImage": "",
+    "additionalImages": [],
+    "data": [
+      {"name": "1", "value": 10, "value2": 15},
+      {"name": "2", "value": 14, "value2": 20},
+      {"name": "3", "value": 18, "value2": 22},
+      {"name": "4", "value": 22, "value2": 25},
+      {"name": "5", "value": 25, "value2": 29},
+      {"name": "6", "value": 29, "value2": 32},
+      {"name": "7", "value": 32, "value2": 35},
+      {"name": "8", "value": 35, "value2": 38},
+      {"name": "9", "value": 39, "value2": 41},
+      {"name": "10", "value": 42, "value2": 45},
+      {"name": "11", "value": 46, "value2": 48},
+      {"name": "12", "value": 49, "value2": 52}
+    ]
+  },
+  {
+    "id": "distribuicao-observacoes",
+    "title": "Distribuição de observações",
+    "category": "Distribuição",
+    "categorySlug": "distribution",
+    "description": "Comparação de distribuições entre diferentes condições experimentais.",
+    "method": "Distribuição",
+    "application": "Análise exploratória",
+    "chartType": "bar",
+    "explanation": "Dados simulados para demonstração visual.",
+    "results": "",
+    "order": 3,
+    "primaryImage": "",
+    "additionalImages": [],
+    "data": [
+      {"name": "0–10", "value": 3},
+      {"name": "10–20", "value": 8},
+      {"name": "20–30", "value": 15},
+      {"name": "30–40", "value": 19},
+      {"name": "40–50", "value": 11},
+      {"name": "50–60", "value": 4}
+    ]
+  },
+  {
+    "id": "componentes-principais",
+    "title": "Projeção de componentes principais",
+    "category": "Multivariada",
+    "categorySlug": "multivariate",
+    "description": "Representação demonstrativa de observações em um espaço de componentes principais.",
+    "method": "PCA",
+    "application": "Análise multivariada",
+    "chartType": "pca",
+    "explanation": "Dados simulados para demonstração visual.",
+    "results": "",
+    "order": 4,
+    "primaryImage": "",
+    "additionalImages": [],
+    "data": [
+      {"name": "Grupo A", "value": -3, "value2": 2},
+      {"name": "Grupo A", "value": -2, "value2": 3},
+      {"name": "Grupo A", "value": -3, "value2": 4},
+      {"name": "Grupo B", "value": 2, "value2": -2},
+      {"name": "Grupo B", "value": 3, "value2": -1},
+      {"name": "Grupo C", "value": 2, "value2": 3},
+      {"name": "Grupo C", "value": 3, "value2": 2},
+      {"name": "Grupo C", "value": 4, "value2": 3}
+    ]
+  }
+]
