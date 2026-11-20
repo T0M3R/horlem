@@ -1,0 +1,8 @@
+[
+  {"title": "Comparação", "name": "Boxplot + observações", "text": "Útil para visualizar distribuição, mediana e observações individuais entre grupos."},
+  {"title": "Relação", "name": "Dispersão com regressão", "text": "Adequado para investigar associação e identificar padrões ou influências."},
+  {"title": "Evolução", "name": "Curva temporal", "text": "Apresenta mudanças ao longo do tempo sem comparar categorias indevidamente."},
+  {"title": "Composição", "name": "Barras organizadas", "text": "Apresenta frequências ou resumos com escalas consistentes e contexto suficiente."},
+  {"title": "Multivariada", "name": "PCA ou PCoA", "text": "Resumir padrões em muitos atributos quando as condições metodológicas são adequadas."},
+  {"title": "Diagnóstico", "name": "Gráficos de resíduos", "text": "Avaliam premissas e ajudam a verificar a adequação de modelos estatísticos."}
+]

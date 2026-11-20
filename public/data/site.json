@@ -1,0 +1,28 @@
+{
+  "brandName": "Horlem",
+  "logo": "/media/logo.svg",
+  "colors": {
+    "navy": "#111d38",
+    "blue": "#315bd6"
+  },
+  "hero": {
+    "eyebrow": "Análise e visualização de dados",
+    "title": "Transforme seus dados em resultados que fazem sentido.",
+    "emphasis": "fazem sentido.",
+    "lead": "Análise estatística, tratamento de dados e gráficos profissionais para pesquisas, projetos e decisões mais fundamentadas.",
+    "primaryButton": "Solicitar orçamento",
+    "secondaryButton": "Explorar portfólio"
+  },
+  "intro": "Organizamos dados, escolhemos métodos adequados ao delineamento e transformamos resultados em figuras que comunicam com precisão — sem perder o contexto científico.",
+  "institution": {
+    "name": "Horlem Consultory",
+    "description": "Análise estatística e visualização de dados.",
+    "copyright": "Dados tratados com responsabilidade"
+  },
+  "contact": {
+    "whatsapp": "",
+    "email": "",
+    "privacyText": "Os dados do projeto não são publicados ou utilizados em demonstrações sem autorização."
+  },
+  "socialLinks": []
+}
