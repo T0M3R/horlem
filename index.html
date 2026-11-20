@@ -1,19 +1,1376 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#315bd6" />
-    <meta name="description" content="Análise estatística, tratamento de dados e gráficos científicos profissionais para pesquisas, teses, artigos e relatórios." />
-    <meta name="keywords" content="análise estatística, gráficos científicos, estatística para dissertação, análise de dados científicos, visualização de dados" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Horlem — Análise estatística e visualização de dados" />
-    <meta property="og:description" content="Transforme seus dados em resultados claros, rigorosos e visualmente profissionais." />
-    <title>Horlem | Análise Estatística e Gráficos Científicos</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101d35">
+<meta name="description" content="Análise estatística, visualização de dados e gráficos científicos profissionais para pesquisas, dissertações, teses e projetos.">
+<title>DataLab | Análise Estatística & Visualização de Dados</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #101d35;
+    --blue: #2856c7;
+    --blue-light: #edf2ff;
+    --cyan: #65b9d8;
+    --text: #26344a;
+    --muted: #778399;
+    --border: #e7ebf2;
+    --background: #ffffff;
+    --surface: #f7f9fc;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+    font-family:'DM Sans',sans-serif;
+    color:var(--text);
+    background:var(--background);
+    overflow-x:hidden;
+}
+
+a { text-decoration:none; color:inherit; }
+
+button { font-family:inherit; cursor:pointer; }
+
+.container {
+    width:min(1160px,90%);
+    margin:auto;
+}
+
+/* HEADER */
+
+header {
+    height:78px;
+    display:flex;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.logo {
+    font-family:'Manrope',sans-serif;
+    font-size:23px;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:var(--navy);
+}
+
+.logo span { color:var(--blue); }
+
+.nav-links {
+    display:flex;
+    align-items:center;
+    gap:32px;
+    font-size:13px;
+    font-weight:600;
+    color:#627087;
+}
+
+.nav-links a:hover { color:var(--blue); }
+
+.nav-button {
+    background:var(--navy);
+    color:white;
+    padding:12px 20px;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.nav-button:hover { background:var(--blue); }
+
+.menu-toggle {
+    display:none;
+    border:0;
+    background:none;
+    color:var(--navy);
+}
+
+/* HERO */
+
+.hero {
+    padding:100px 0 90px;
+    background:
+      radial-gradient(ellipse at 90% 20%,#e8efff 0,transparent 36%),
+      linear-gradient(180deg,#fff,#fbfcff);
+}
+
+.hero-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:70px;
+}
+
+.eyebrow {
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 13px;
+    background:var(--blue-light);
+    color:var(--blue);
+    border-radius:30px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+}
+
+.eyebrow i { width:15px; }
+
+h1 {
+    font-family:'Manrope',sans-serif;
+    font-size:clamp(39px,5vw,62px);
+    line-height:1.12;
+    letter-spacing:-2.8px;
+    color:var(--navy);
+    margin-bottom:25px;
+}
+
+h1 span { color:var(--blue); }
+
+.hero-description {
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.8;
+    max-width:510px;
+    margin-bottom:32px;
+}
+
+.hero-actions {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn-primary,.btn-secondary {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 22px;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.btn-primary {
+    background:var(--blue);
+    color:white;
+    box-shadow:0 8px 20px rgba(40,86,199,.18);
+}
+
+.btn-primary:hover {
+    transform:translateY(-2px);
+    background:#1d45ac;
+}
+
+.btn-secondary {
+    border:1px solid var(--border);
+    color:var(--navy);
+    background:white;
+}
+
+.btn-secondary:hover { border-color:var(--blue); }
+
+.hero-visual {
+    position:relative;
+    min-width:0;
+}
+
+.dashboard {
+    background:white;
+    border:1px solid #e8edf5;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 25px 70px rgba(24,43,78,.10);
+    transform:rotate(1deg);
+}
+
+.dashboard-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.dashboard-title {
+    font-size:13px;
+    font-weight:800;
+    color:var(--navy);
+}
+
+.dashboard-label {
+    font-size:10px;
+    color:#159b72;
+    background:#e8f8f1;
+    padding:6px 10px;
+    border-radius:20px;
+}
+
+.chart-area { height:210px; position:relative; }
+
+.dashboard-bottom {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+}
+
+.mini-card {
+    padding:14px;
+    background:var(--surface);
+    border-radius:8px;
+}
+
+.mini-label {
+    color:var(--muted);
+    font-size:10px;
+    margin-bottom:8px;
+}
+
+.mini-value {
+    color:var(--navy);
+    font-size:18px;
+    font-weight:800;
+}
+
+.floating-card {
+    position:absolute;
+    right:-25px;
+    bottom:-30px;
+    background:white;
+    padding:16px 20px;
+    border:1px solid var(--border);
+    box-shadow:0 12px 30px #182b4a12;
+    border-radius:10px;
+    font-size:12px;
+}
+
+.floating-card strong {
+    display:block;
+    color:var(--blue);
+    font-size:20px;
+}
+
+/* GENERAL SECTIONS */
+
+section { padding:95px 0; }
+
+.section-heading {
+    max-width:650px;
+    margin-bottom:48px;
+}
+
+.section-kicker {
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.section-heading h2 {
+    font-family:'Manrope',sans-serif;
+    color:var(--navy);
+    font-size:clamp(29px,4vw,42px);
+    line-height:1.2;
+    letter-spacing:-1.4px;
+    margin-bottom:16px;
+}
+
+.section-heading p {
+    color:var(--muted);
+    line-height:1.8;
+    font-size:14px;
+}
+
+/* SERVICES */
+
+.services { background:var(--surface); }
+
+.services-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service-card {
+    background:white;
+    border:1px solid var(--border);
+    padding:28px;
+    border-radius:10px;
+    transition:.25s;
+}
+
+.service-card:hover {
+    transform:translateY(-5px);
+    border-color:#bdcafa;
+    box-shadow:0 15px 35px #182b4a0b;
+}
+
+.service-icon {
+    width:46px;
+    height:46px;
+    display:grid;
+    place-items:center;
+    background:var(--blue-light);
+    color:var(--blue);
+    border-radius:9px;
+    margin-bottom:22px;
+}
+
+.service-icon i { width:21px; }
+
+.service-card h3 {
+    font-size:16px;
+    color:var(--navy);
+    margin-bottom:12px;
+}
+
+.service-card p {
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.service-link {
+    display:inline-block;
+    margin-top:19px;
+    color:var(--blue);
+    font-size:12px;
+    font-weight:800;
+}
+
+/* PORTFOLIO */
+
+.portfolio { background:white; }
+
+.filters {
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-bottom:32px;
+}
+
+.filter-btn {
+    border:1px solid var(--border);
+    background:white;
+    color:#68758b;
+    padding:10px 16px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.filter-btn.active,.filter-btn:hover {
+    background:var(--navy);
+    color:white;
+    border-color:var(--navy);
+}
+
+.portfolio-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.portfolio-item {
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    transition:.2s;
+    background:white;
+}
+
+.portfolio-item:hover {
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px #182b4a0b;
+}
+
+.portfolio-chart {
+    height:280px;
+    padding:22px;
+    background:#fbfcfe;
+    cursor:pointer;
+}
+
+.portfolio-info { padding:22px; }
+
+.portfolio-category {
+    font-size:10px;
+    color:var(--blue);
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:9px;
+}
+
+.portfolio-info h3 {
+    font-size:16px;
+    color:var(--navy);
+    margin-bottom:8px;
+}
+
+.portfolio-info p {
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.chart-note {
+    margin-top:13px;
+    color:#94a0b2;
+    font-size:10px;
+}
+
+/* DIFFERENTIAL */
+
+.differentials { background:var(--navy); }
+
+.differentials .section-heading h2 { color:white; }
+
+.differentials .section-heading p { color:#aab6c9; }
+
+.diff-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+}
+
+.diff-item { color:white; }
+
+.diff-item i {
+    color:#79a0ff;
+    width:27px;
+    height:27px;
+    margin-bottom:20px;
+}
+
+.diff-item h3 {
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.diff-item p {
+    color:#aab6c9;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* PROCESS */
+
+.process-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.process-step { position:relative; }
+
+.step-number {
+    font-family:'Manrope',sans-serif;
+    font-size:35px;
+    color:#d8e2ff;
+    font-weight:800;
+    margin-bottom:17px;
+}
+
+.process-step h3 {
+    font-size:14px;
+    color:var(--navy);
+    margin-bottom:10px;
+}
+
+.process-step p {
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* CTA */
+
+.cta {
+    background:linear-gradient(120deg,#1b3671,#2856c7);
+    text-align:center;
+    padding:80px 20px;
+}
+
+.cta h2 {
+    font-family:'Manrope',sans-serif;
+    color:white;
+    font-size:clamp(28px,4vw,42px);
+    margin-bottom:16px;
+    letter-spacing:-1px;
+}
+
+.cta p {
+    color:#d5e0ff;
+    font-size:14px;
+    margin-bottom:28px;
+}
+
+.cta .btn-primary {
+    background:white;
+    color:var(--blue);
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+}
+
+.contact-info h2 {
+    font-family:'Manrope',sans-serif;
+    color:var(--navy);
+    font-size:36px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.contact-info p {
+    font-size:14px;
+    line-height:1.8;
+    color:var(--muted);
+}
+
+.contact-detail {
+    margin-top:30px;
+    padding:18px;
+    background:var(--surface);
+    border-radius:8px;
+    font-size:12px;
+    color:var(--text);
+}
+
+.contact-form {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.form-group {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group.full { grid-column:1/-1; }
+
+.form-group label {
+    font-size:11px;
+    font-weight:700;
+    color:var(--navy);
+}
+
+.form-group input,.form-group select,.form-group textarea {
+    width:100%;
+    padding:13px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    font-family:inherit;
+    font-size:12px;
+    outline:none;
+    background:white;
+    color:var(--text);
+}
+
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus {
+    border-color:var(--blue);
+}
+
+.form-group textarea {
+    min-height:120px;
+    resize:vertical;
+}
+
+.contact-form button {
+    border:0;
+    grid-column:1/-1;
+    width:100%;
+}
+
+/* FOOTER */
+
+footer {
+    background:#0b1629;
+    padding:38px 0;
+    color:#aab6c9;
+}
+
+.footer-content {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-logo { color:white; }
+
+footer p { font-size:11px; }
+
+/* WHATSAPP */
+
+.whatsapp {
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:90;
+    width:55px;
+    height:55px;
+    display:grid;
+    place-items:center;
+    background:#20b878;
+    color:white;
+    border-radius:50%;
+    box-shadow:0 8px 25px #20b87855;
+}
+
+.whatsapp svg { width:25px; height:25px; }
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+    .hero-grid { grid-template-columns:1fr; gap:55px; }
+    .hero { padding:75px 0; }
+    .services-grid { grid-template-columns:repeat(2,1fr); }
+    .diff-grid { grid-template-columns:repeat(2,1fr); }
+    .process-grid { grid-template-columns:repeat(2,1fr); }
+    .contact-grid { grid-template-columns:1fr; gap:40px; }
+}
+
+@media(max-width:650px) {
+    .nav-links {
+        display:none;
+        position:absolute;
+        top:78px;
+        left:0;
+        width:100%;
+        background:white;
+        padding:25px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:20px;
+        border-bottom:1px solid var(--border);
+    }
+
+    .nav-links.open { display:flex; }
+
+    .menu-toggle { display:block; }
+
+    .nav-button { text-align:center; }
+
+    .services-grid,.portfolio-grid,.diff-grid,.process-grid {
+        grid-template-columns:1fr;
+    }
+
+    section { padding:70px 0; }
+
+    .dashboard { padding:17px; }
+
+    .floating-card { right:-5px; }
+
+    .contact-form { grid-template-columns:1fr; }
+
+    .form-group.full { grid-column:auto; }
+
+    .footer-content { flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+    <a href="#" class="logo">DATA<span>LAB.</span></a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#contato" class="nav-button">Solicitar orçamento</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <i data-lucide="menu"></i>
+    </button>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+
+    <div>
+        <div class="eyebrow">
+            <i data-lucide="activity"></i>
+            Data analysis & visualization
+        </div>
+
+        <h1>
+            Transforme seus dados em <span>resultados que fazem sentido.</span>
+        </h1>
+
+        <p class="hero-description">
+            Análise estatística, visualização de dados e gráficos profissionais
+            para pesquisas científicas, projetos acadêmicos e decisões fundamentadas.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#contato" class="btn-primary">
+                Solicitar orçamento
+                <i data-lucide="arrow-up-right"></i>
+            </a>
+
+            <a href="#portfolio" class="btn-secondary">
+                Explorar portfólio
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div class="dashboard-title">Statistical Overview</div>
+                <div class="dashboard-label">Demonstração</div>
+            </div>
+
+            <div class="chart-area">
+                <canvas id="heroChart"></canvas>
+            </div>
+
+            <div class="dashboard-bottom">
+                <div class="mini-card">
+                    <div class="mini-label">Análise</div>
+                    <div class="mini-value">PCA</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-label">Visualização</div>
+                    <div class="mini-value">Data-driven</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-card">
+            <span>Visualização profissional</span>
+            <strong>Data → Insight</strong>
+        </div>
+    </div>
+
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="servicos">
+<div class="container">
+
+    <div class="section-heading">
+        <div class="section-kicker">O que fazemos</div>
+        <h2>Dados bem analisados. Resultados bem apresentados.</h2>
+        <p>
+            Soluções personalizadas para transformar conjuntos de dados
+            em informações claras, organizadas e visualmente profissionais.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="chart-column"></i></div>
+            <h3>Gráficos profissionais</h3>
+            <p>Visualizações personalizadas para artigos, apresentações, relatórios, dissertações e teses.</p>
+            <a href="#portfolio" class="service-link">Ver exemplos →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="calculator"></i></div>
+            <h3>Análise estatística</h3>
+            <p>Testes estatísticos, comparações entre grupos, correlações, regressões e estimativas.</p>
+            <a href="#contato" class="service-link">Solicitar análise →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="network"></i></div>
+            <h3>Análise multivariada</h3>
+            <p>PCA, PCoA, clustering, PERMANOVA, heatmaps e exploração de estruturas complexas.</p>
+            <a href="#contato" class="service-link">Conhecer serviço →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="database"></i></div>
+            <h3>Tratamento de dados</h3>
+            <p>Organização, limpeza, padronização e preparação de bancos de dados para análise.</p>
+            <a href="#contato" class="service-link">Solicitar serviço →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="layers"></i></div>
+            <h3>Figuras científicas</h3>
+            <p>Composições multipainel, figuras de publicação e visualizações para comunicação científica.</p>
+            <a href="#portfolio" class="service-link">Ver exemplos →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
+            <h3>Dashboards e relatórios</h3>
+            <p>Painéis interativos e relatórios visuais para acompanhamento e interpretação de indicadores.</p>
+            <a href="#contato" class="service-link">Solicitar orçamento →</a>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section class="portfolio" id="portfolio">
+<div class="container">
+
+    <div class="section-heading">
+        <div class="section-kicker">Portfólio</div>
+        <h2>Visualização que valoriza seus dados.</h2>
+        <p>
+            Explore diferentes possibilidades de representação gráfica
+            e conheça aplicações de métodos estatísticos.
+        </p>
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="comparison">Comparações</button>
+        <button class="filter-btn" data-filter="correlation">Correlação</button>
+        <button class="filter-btn" data-filter="multivariate">Multivariada</button>
+        <button class="filter-btn" data-filter="distribution">Distribuição</button>
+    </div>
+
+    <div class="portfolio-grid">
+
+        <article class="portfolio-item" data-category="comparison">
+            <div class="portfolio-chart">
+                <canvas id="chart1"></canvas>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">Comparação entre grupos</div>
+                <h3>Comparação de resultados experimentais</h3>
+                <p>Exemplo demonstrativo de comparação de médias entre diferentes grupos experimentais.</p>
+                <div class="chart-note">Dados simulados para demonstração visual.</div>
+            </div>
+        </article>
+
+        <article class="portfolio-item" data-category="correlation">
+            <div class="portfolio-chart">
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">Correlação e regressão</div>
+                <h3>Relacionamento entre variáveis</h3>
+                <p>Visualização de associação entre duas variáveis quantitativas e tendência linear.</p>
+                <div class="chart-note">Dados simulados para demonstração visual.</div>
+            </div>
+        </article>
+
+        <article class="portfolio-item" data-category="distribution">
+            <div class="portfolio-chart">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">Distribuição</div>
+                <h3>Distribuição de observações</h3>
+                <p>Comparação de distribuições entre diferentes condições experimentais.</p>
+                <div class="chart-note">Dados simulados para demonstração visual.</div>
+            </div>
+        </article>
+
+        <article class="portfolio-item" data-category="multivariate">
+            <div class="portfolio-chart">
+                <canvas id="chart4"></canvas>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">Análise multivariada</div>
+                <h3>Projeção de componentes principais</h3>
+                <p>Representação demonstrativa de observações em um espaço de componentes principais.</p>
+                <div class="chart-note">Dados simulados para demonstração visual.</div>
+            </div>
+        </article>
+
+    </div>
+</div>
+</section>
+
+<!-- DIFFERENTIALS -->
+
+<section class="differentials">
+<div class="container">
+
+    <div class="section-heading">
+        <div class="section-kicker">Nosso compromisso</div>
+        <h2>Mais do que gráficos bonitos. Precisão em cada detalhe.</h2>
+        <p>
+            Uma boa visualização começa com uma análise adequada
+            e termina com uma comunicação clara dos resultados.
+        </p>
+    </div>
+
+    <div class="diff-grid">
+
+        <div class="diff-item">
+            <i data-lucide="microscope"></i>
+            <h3>Rigor metodológico</h3>
+            <p>Escolha de métodos considerando o delineamento, a estrutura dos dados e os objetivos da pesquisa.</p>
+        </div>
+
+        <div class="diff-item">
+            <i data-lucide="palette"></i>
+            <h3>Identidade visual</h3>
+            <p>Gráficos personalizados, consistentes e adequados ao contexto de utilização.</p>
+        </div>
+
+        <div class="diff-item">
+            <i data-lucide="file-check"></i>
+            <h3>Entrega profissional</h3>
+            <p>Arquivos organizados e formatos adequados para diferentes aplicações.</p>
+        </div>
+
+        <div class="diff-item">
+            <i data-lucide="target"></i>
+            <h3>Clareza estatística</h3>
+            <p>Resultados apresentados de maneira objetiva, sem comprometer sua interpretação.</p>
+        </div>
+
+        <div class="diff-item">
+            <i data-lucide="settings"></i>
+            <h3>Personalização</h3>
+            <p>Desenvolvimento de soluções conforme as características e necessidades de cada projeto.</p>
+        </div>
+
+        <div class="diff-item">
+            <i data-lucide="graduation-cap"></i>
+            <h3>Contexto científico</h3>
+            <p>Especial atenção às necessidades de pesquisadores e profissionais acadêmicos.</p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+
+<section id="processo">
+<div class="container">
+
+    <div class="section-heading">
+        <div class="section-kicker">Como funciona</div>
+        <h2>Do conjunto de dados ao resultado final.</h2>
+        <p>Um processo organizado, transparente e adaptado às necessidades de cada projeto.</p>
+    </div>
+
+    <div class="process-grid">
+
+        <div class="process-step">
+            <div class="step-number">01</div>
+            <h3>Envio dos dados</h3>
+            <p>Você apresenta seu projeto, seus dados e os resultados que deseja obter.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">02</div>
+            <h3>Avaliação e orçamento</h3>
+            <p>As necessidades são avaliadas para definir o escopo e a proposta de trabalho.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">03</div>
+            <h3>Análise e desenvolvimento</h3>
+            <p>Os dados são tratados, analisados e transformados em visualizações adequadas.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">04</div>
+            <h3>Entrega</h3>
+            <p>Você recebe os resultados e os arquivos previstos no escopo contratado.</p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+    <div class="container">
+        <h2>Seus dados merecem uma apresentação à altura.</h2>
+        <p>Vamos transformar seus resultados em visualizações profissionais.</p>
+        <a href="#contato" class="btn-primary">
+            Começar meu projeto
+            <i data-lucide="arrow-up-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contato">
+<div class="container contact-grid">
+
+    <div class="contact-info">
+        <div class="section-kicker">Vamos conversar</div>
+        <h2>Conte um pouco sobre seu projeto.</h2>
+        <p>
+            Preencha o formulário com as informações disponíveis.
+            Analisarei sua necessidade para elaborar uma proposta adequada.
+        </p>
+
+        <div class="contact-detail">
+            <strong>Atendimento personalizado</strong><br><br>
+            Cada projeto possui características próprias.
+            Por isso, os valores são definidos conforme o escopo do trabalho.
+        </div>
+    </div>
+
+    <form class="contact-form" id="budgetForm">
+
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" placeholder="Seu nome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="area">Área de atuação</label>
+            <select id="area" required>
+                <option value="">Selecione</option>
+                <option>Biologia e saúde</option>
+                <option>Ciências exatas</option>
+                <option>Ciências humanas</option>
+                <option>Economia e negócios</option>
+                <option>Engenharia</option>
+                <option>Outra área</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="service">Serviço desejado</label>
+            <select id="service" required>
+                <option value="">Selecione</option>
+                <option>Criação de gráficos</option>
+                <option>Análise estatística</option>
+                <option>Análise multivariada</option>
+                <option>Tratamento de dados</option>
+                <option>Figuras científicas</option>
+                <option>Dashboard</option>
+                <option>Não sei exatamente</option>
+            </select>
+        </div>
+
+        <div class="form-group full">
+            <label for="deadline">Prazo desejado</label>
+            <input type="text" id="deadline" placeholder="Ex.: duas semanas">
+        </div>
+
+        <div class="form-group full">
+            <label for="description">Descreva seu projeto</label>
+            <textarea id="description" placeholder="Conte sobre seus dados, objetivos e necessidades..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">
+            Enviar solicitação pelo WhatsApp
+            <i data-lucide="send"></i>
+        </button>
+
+    </form>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-content">
+    <div class="logo footer-logo">DATA<span>.</span>LAB</div>
+    <p>© 2026 DataLab. Análise estatística e visualização de dados.</p>
+    <p>Precisão nos dados. Clareza nos resultados.</p>
+</div>
+</footer>
+
+<a href="#contato" class="whatsapp" aria-label="Solicitar orçamento">
+    <i data-lucide="message-circle"></i>
+</a>
+
+<script>
+
+// ÍCONES
+lucide.createIcons();
+
+// MENU MOBILE
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// CONFIGURAÇÃO GLOBAL DOS GRÁFICOS
+Chart.defaults.font.family = 'DM Sans';
+Chart.defaults.color = '#778399';
+
+const blue = '#2856c7';
+const cyan = '#65b9d8';
+
+// GRÁFICO PRINCIPAL
+new Chart(document.getElementById('heroChart'), {
+    type:'line',
+    data:{
+        labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul'],
+        datasets:[{
+            label:'Grupo A',
+            data:[12,18,15,25,22,32,38],
+            borderColor:blue,
+            backgroundColor:'rgba(40,86,199,.09)',
+            fill:true,
+            tension:.4,
+            pointRadius:3
+        },{
+            label:'Grupo B',
+            data:[9,12,17,18,25,24,31],
+            borderColor:cyan,
+            backgroundColor:'transparent',
+            tension:.4,
+            pointRadius:3
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{position:'bottom',labels:{boxWidth:8,usePointStyle:true}}
+        },
+        scales:{
+            x:{grid:{display:false}},
+            y:{border:{display:false},grid:{color:'#edf0f5'}}
+        }
+    }
+});
+
+// COMPARAÇÃO
+new Chart(document.getElementById('chart1'),{
+    type:'bar',
+    data:{
+        labels:['Controle','Grupo A','Grupo B','Grupo C'],
+        datasets:[{
+            label:'Valor médio',
+            data:[22,31,27,39],
+            backgroundColor:['#a9b9d8','#2856c7','#65b9d8','#405b8f'],
+            borderRadius:5,
+            maxBarThickness:45
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+            y:{beginAtZero:true,grid:{color:'#edf0f5'}},
+            x:{grid:{display:false}}
+        }
+    }
+});
+
+// CORRELAÇÃO
+new Chart(document.getElementById('chart2'),{
+    type:'scatter',
+    data:{
+        datasets:[{
+            label:'Observações',
+            data:[
+                {x:10,y:15},{x:14,y:20},{x:18,y:22},
+                {x:22,y:25},{x:25,y:29},{x:29,y:32},
+                {x:32,y:35},{x:35,y:38},{x:39,y:41},
+                {x:42,y:45},{x:46,y:48},{x:49,y:52}
+            ],
+            backgroundColor:blue,
+            pointRadius:5
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+            x:{title:{display:true,text:'Variável X'},grid:{color:'#edf0f5'}},
+            y:{title:{display:true,text:'Variável Y'},grid:{color:'#edf0f5'}}
+        }
+    }
+});
+
+// DISTRIBUIÇÃO
+new Chart(document.getElementById('chart3'),{
+    type:'bar',
+    data:{
+        labels:['0–10','10–20','20–30','30–40','40–50','50–60'],
+        datasets:[{
+            label:'Frequência',
+            data:[3,8,15,19,11,4],
+            backgroundColor:'#65b9d8',
+            borderRadius:3
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+            x:{title:{display:true,text:'Intervalos'},grid:{display:false}},
+            y:{title:{display:true,text:'Frequência'},beginAtZero:true}
+        }
+    }
+});
+
+// PCA DEMONSTRATIVA
+new Chart(document.getElementById('chart4'),{
+    type:'scatter',
+    data:{
+        datasets:[
+            {
+                label:'Grupo A',
+                data:[
+                    {x:-3,y:2},{x:-2,y:3},{x:-3,y:4},
+                    {x:-1,y:2},{x:-2,y:1}
+                ],
+                backgroundColor:blue,
+                pointRadius:5
+            },
+            {
+                label:'Grupo B',
+                data:[
+                    {x:2,y:-2},{x:3,y:-1},{x:2,y:-3},
+                    {x:4,y:-2},{x:3,y:-3}
+                ],
+                backgroundColor:cyan,
+                pointRadius:5
+            },
+            {
+                label:'Grupo C',
+                data:[
+                    {x:2,y:3},{x:3,y:2},{x:4,y:3},
+                    {x:3,y:4},{x:4,y:2}
+                ],
+                backgroundColor:'#d49b56',
+                pointRadius:5
+            }
+        ]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{legend:{position:'bottom'}},
+        scales:{
+            x:{title:{display:true,text:'PC1'},grid:{color:'#edf0f5'}},
+            y:{title:{display:true,text:'PC2'},grid:{color:'#edf0f5'}}
+        }
+    }
+});
+
+// FILTROS DO PORTFÓLIO
+const filterButtons = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        portfolioItems.forEach(item => {
+            item.style.display =
+                filter === 'all' || item.dataset.category === filter
+                ? 'block' : 'none';
+        });
+    });
+});
+
+// FORMULÁRIO
+document.getElementById('budgetForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const phone = ''; // INSIRA SEU WHATSAPP COM DDI E DDD, SOMENTE NÚMEROS.
+
+    if(!phone) {
+        alert('O formulário ainda precisa ser configurado com seu número de WhatsApp.');
+        return;
+    }
+
+    const fields = {
+        name:document.getElementById('name').value,
+        email:document.getElementById('email').value,
+        area:document.getElementById('area').value,
+        service:document.getElementById('service').value,
+        deadline:document.getElementById('deadline').value,
+        description:document.getElementById('description').value
+    };
+
+    const message =
+`Olá! Gostaria de solicitar um orçamento.
+
+Nome: ${fields.name}
+E-mail: ${fields.email}
+Área: ${fields.area}
+Serviço: ${fields.service}
+Prazo: ${fields.deadline}
+
+Descrição:
+${fields.description}`;
+
+    window.open(
+        'https://wa.me/' + phone + '?text=' + encodeURIComponent(message),
+        '_blank'
+    );
+});
+
+</script>
+
+</body>
 </html>
