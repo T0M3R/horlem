@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="title description">
+  <title id="title">Horlem Consultoria</title>
+  <desc id="description">Logotipo da Horlem em azul escuro.</desc>
+  <g fill="#12356f">
+    <!-- Emblema -->
+    <path d="M275 2h410v18H602c-24 0-38 13-38 37v91h228l-8 18H564v125c0 24 14 37 38 37h83v18H275v-18h83c24 0 38-13 38-37V166H219l-9-18h186V57c0-24-14-37-38-37h-83V2z"/>
+    <path d="M690 274h55v72h-55zM770 238h55v108h-55zM850 178h55v168h-55z"/>
+    <path d="M165 310C330 205 530 137 734 122c-165 4-344 48-568 188z"/>
+    <path d="M330 300c198-66 385-134 550-252-82 136-261 246-550 252z"/>
+
+    <!-- HORLEM -->
+    <g font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="194" letter-spacing="28">
+      <text x="8" y="398">HORLEM</text>
+    </g>
+
+    <!-- Linha e descrição -->
+    <rect x="4" y="414" width="206" height="6"/>
+    <rect x="990" y="414" width="206" height="6"/>
+    <g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="56" letter-spacing="31">
+      <text x="250" y="423">CONSULTORIA</text>
+    </g>
+  </g>
+</svg>

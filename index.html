@@ -76,6 +76,13 @@ header {
 
 .logo span { color:var(--blue); }
 
+.header-logo {
+    display:block;
+    width:205px;
+    height:58px;
+    object-fit:contain;
+}
+
 .nav-links {
     display:flex;
     align-items:center;
@@ -669,6 +676,11 @@ footer p { font-size:11px; }
 }
 
 @media(max-width:650px) {
+    .header-logo {
+        width:172px;
+        height:49px;
+    }
+
     .nav-links {
         display:none;
         position:absolute;
@@ -712,7 +724,9 @@ footer p { font-size:11px; }
 
 <header>
 <div class="container nav">
-    <a href="#" class="logo">DATA<span>LAB.</span></a>
+    <a href="#" aria-label="Horlem Consultoria">
+        <img class="header-logo" src="media/horlem-logo.svg" alt="Horlem Consultoria">
+    </a>
 
     <nav class="nav-links" id="navLinks">
         <a href="#inicio">Início</a>
