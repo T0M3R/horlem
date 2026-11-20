@@ -1,6 +1,6 @@
 {
-  "brandName": "DataLab.",
-  "logo": "/media/logo.svg",
+  "brandName": "Horlem Consultoria",
+  "logo": "/media/horlem-logo.svg",
   "colors": {
     "navy": "#111d38",
     "blue": "#315bd6"
@@ -15,7 +15,7 @@
   },
   "intro": "Organizamos dados, escolhemos métodos adequados ao delineamento e transformamos resultados em figuras que comunicam com precisão — sem perder o contexto científico.",
   "institution": {
-    "name": "DataLab.",
+    "name": "Horlem Consultoria",
     "description": "Análise estatística e visualização de dados.",
     "copyright": "Precisão nos dados. Clareza nos resultados."
   },

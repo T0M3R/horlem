@@ -197,9 +197,8 @@ function App() {
         <nav className="nav container" aria-label="Navegação principal">
           <button className="brand" onClick={() => scrollTo('inicio')} aria-label="Ir para o início">
             {site.logo
-              ? <img className="brand-logo" src={resolveAsset(site.logo)} alt="" />
-              : <span className="brand-mark"><ChartNoAxesCombined size={18} /></span>}
-            <span>{site.brandName}</span>
+              ? <img className="brand-logo" src={resolveAsset(site.logo)} alt={site.brandName} />
+              : <><span className="brand-mark"><ChartNoAxesCombined size={18} /></span><span>{site.brandName}</span></>}
           </button>
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <button onClick={() => scrollTo('servicos')}>Serviços</button>
@@ -309,7 +308,7 @@ function App() {
         <section className="final-cta"><div className="container"><h2>Seus dados merecem uma apresentação à altura da sua pesquisa.</h2><button className="button light" onClick={() => scrollTo('orcamento')}>Solicitar orçamento <ArrowRight size={17} /></button></div></section>
       </main>
 
-      <footer><div className="container footer-grid"><div><div className="brand footer-brand">{site.logo ? <img className="brand-logo" src={resolveAsset(site.logo)} alt="" /> : <span className="brand-mark"><ChartNoAxesCombined size={18} /></span>}<span>{site.brandName}</span></div><p>{site.institution.description}</p></div><div><strong>Serviços</strong><button onClick={() => scrollTo('servicos')}>Análise estatística</button><button onClick={() => scrollTo('servicos')}>Gráficos científicos</button><button onClick={() => scrollTo('servicos')}>Dashboards</button></div><div><strong>Site</strong><button onClick={() => scrollTo('portfolio')}>Portfólio</button><button onClick={() => scrollTo('orcamento')}>Orçamento</button><a href={`${import.meta.env.BASE_URL}privacidade.html`}>Privacidade</a></div></div><div className="container footer-bottom"><span>© {currentYear} {site.institution.name}</span><span>{site.institution.copyright}</span></div></footer>
+      <footer><div className="container footer-grid"><div><div className="brand footer-brand">{site.logo ? <img className="brand-logo" src={resolveAsset(site.logo)} alt={site.brandName} /> : <><span className="brand-mark"><ChartNoAxesCombined size={18} /></span><span>{site.brandName}</span></>}</div><p>{site.institution.description}</p></div><div><strong>Serviços</strong><button onClick={() => scrollTo('servicos')}>Análise estatística</button><button onClick={() => scrollTo('servicos')}>Gráficos científicos</button><button onClick={() => scrollTo('servicos')}>Dashboards</button></div><div><strong>Site</strong><button onClick={() => scrollTo('portfolio')}>Portfólio</button><button onClick={() => scrollTo('orcamento')}>Orçamento</button><a href={`${import.meta.env.BASE_URL}privacidade.html`}>Privacidade</a></div></div><div className="container footer-bottom"><span>© {currentYear} {site.institution.name}</span><span>{site.institution.copyright}</span></div></footer>
 
       {selected && (
         <div className="modal-backdrop" role="dialog" aria-modal="true" aria-label={selected.title} onMouseDown={(event) => { if (event.target === event.currentTarget) setSelected(null) }}>
